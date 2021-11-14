@@ -2,6 +2,10 @@ local M = {}
 
 M.config = function()
   -- Autocommands
+  --   vim.cmd [[
+  --  au BufRead,BufNewFile *.graphql set filetype=gql
+  -- ]]
+
   if lvim.builtin.nonumber_unfocus then
     vim.cmd [[
 " don't show line number in unfocued window
@@ -140,6 +144,10 @@ M.make_run = function()
       "Filetype",
       "go",
       "nnoremap <leader>r <cmd>lua require('lvim.core.terminal')._exec_toggle('go run .;read')<CR>",
+    {
+      "Filetype",
+      "java",
+      "nnoremap <leader>m <cmd>lua require('toggleterm.terminal').Terminal:new {cmd='mvn compile;read', hidden =false}:toggle()<CR>",
     },
 
     -- python

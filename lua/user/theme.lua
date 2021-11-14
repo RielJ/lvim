@@ -22,10 +22,10 @@ M.tokyonight = function()
   vim.g.tokyonight_hide_inactive_statusline = true
   vim.g.tokyonight_dark_sidebar = true
   vim.g.tokyonight_dark_float = true
-  local _time = os.date "*t"
-  if _time.hour < 8 then
-    vim.g.tokyonight_style = "night"
-  end
+  -- local _time = os.date "*t"
+  -- if _time.hour < 8 then
+  --   vim.g.tokyonight_style = "night"
+  -- end
 end
 
 M.rose_pine = function()

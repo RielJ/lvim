@@ -8,6 +8,7 @@ M.config = function()
 
   local icons = require("user.lsp_kind").todo_comments
   todo.setup {
+    signs = true,
     keywords = {
       FIX = { icon = icons.FIX },
       TODO = { icon = icons.TODO, alt = { "WIP" } },
@@ -17,6 +18,17 @@ M.config = function()
       NOTE = { icon = icons.NOTE, alt = { "INFO", "NB" } },
       ERROR = { icon = icons.ERROR, color = "error", alt = { "ERR" } },
       REFS = { icon = icons.REFS },
+-- =======
+--       FIX = { icon = "律" },
+--       TODO = { icon = " ", alt = { "WIP" } },
+--       HACK = { icon = " ", color = "hack" },
+--       WARN = { icon = "裂", color = "warning" },
+--       PERF = { icon = "龍", color = "default" },
+--       NOTE = { icon = " ", color = "hint", alt = { "INFO", "NB" } },
+--       LINK = { icon = " ", color = "ref", alt = { "LINKS", "REF", "REFS" } },
+--       ERROR = { icon = " ", color = "error", alt = { "ERR" } },
+--       REFS = { icon = "", color = "ref" },
+-- >>>>>>> 9db0ae1 (commited)
     },
     highlight = { max_line_len = 120 },
     colors = {

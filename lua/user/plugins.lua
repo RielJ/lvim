@@ -6,6 +6,16 @@ M.config = function()
     neoclip_req = {}
   end
   lvim.plugins = {
+    -- { "rktjmp/lush.nvim" },
+    -- {
+    --   "ellisonleao/gruvbox.nvim",
+    --   requires = { "rktjmp/lush.nvim" },
+    --   config = function()
+    --     vim.cmd [[
+    --    colorscheme gruvbox
+    --    ]]
+    --   end,
+    -- },
     {
       "abzcoding/zephyr-nvim",
       config = function()
@@ -13,10 +23,10 @@ M.config = function()
        colorscheme zephyr
        ]]
       end,
-      cond = function()
-        local _time = os.date "*t"
-        return (_time.hour >= 5 and _time.hour < 8)
-      end,
+      -- cond = function()
+      --   local _time = os.date "*t"
+      --   return (_time.hour >= 5 and _time.hour < 8)
+      -- end,
     },
     {
       "rose-pine/neovim",
@@ -24,23 +34,23 @@ M.config = function()
       config = function()
         require("user.theme").rose_pine()
       end,
-      cond = function()
-        local _time = os.date "*t"
-        return (_time.hour >= 8 and _time.hour < 11)
-      end,
+      -- cond = function()
+      --   local _time = os.date "*t"
+      --   return (_time.hour >= 8 and _time.hour < 11)
+      -- end,
     },
     {
       "folke/tokyonight.nvim",
       config = function()
         require("user.theme").tokyonight()
         vim.cmd [[
-      colorscheme tokyonight
-      ]]
+          colorscheme tokyonight
+          ]]
       end,
-      cond = function()
-        local _time = os.date "*t"
-        return (_time.hour >= 0 and _time.hour < 5) or (_time.hour >= 11 and _time.hour < 17)
-      end,
+      -- cond = function()
+      --   local _time = os.date "*t"
+      --   return (_time.hour >= 0 and _time.hour < 5) or (_time.hour >= 11 and _time.hour < 17)
+      -- end,
     },
     {
       "abzcoding/doom-one.nvim",
@@ -51,10 +61,10 @@ M.config = function()
       colorscheme doom-one
       ]]
       end,
-      cond = function()
-        local _time = os.date "*t"
-        return (_time.hour >= 17 and _time.hour < 21)
-      end,
+      -- cond = function()
+      --   local _time = os.date "*t"
+      --   return (_time.hour >= 17 and _time.hour < 21)
+      -- end,
     },
     {
       "ray-x/lsp_signature.nvim",
@@ -101,6 +111,11 @@ M.config = function()
     },
     {
       "phaazon/hop.nvim",
+      -- "ChristianChiarulli/vim-solidity",
+      "ilya-bobyr/vim-solidity",
+    },
+    {
+      "IndianBoy42/hop.nvim",
       event = "BufRead",
       config = function()
         require("user.hop").config()
@@ -174,18 +189,21 @@ M.config = function()
         vim.g.matchup_matchparen_offscreen = { method = "popup" }
       end,
     },
-    {
-      "iamcco/markdown-preview.nvim",
-      run = "cd app && npm install",
-      ft = "markdown",
-    },
-    {
-      "simrat39/rust-tools.nvim",
-      config = function()
-        require("user.rust_tools").config()
-      end,
-      ft = { "rust", "rs" },
-    },
+    -- {
+    --   "iamcco/markdown-preview.nvim",
+    --   run = "cd app && npm install",
+    --   ft = "markdown",
+    -- },
+    { "p00f/nvim-ts-rainbow" },
+    { "tpope/vim-surround" },
+    { "tpope/vim-fugitive" },
+    -- {
+    --   "simrat39/rust-tools.nvim",
+    --   config = function()
+    --     require("user.rust_tools").config()
+    --   end,
+    --   ft = { "rust", "rs" },
+    -- },
     {
       "folke/zen-mode.nvim",
       config = function()
@@ -193,13 +211,13 @@ M.config = function()
       end,
       event = "BufRead",
     },
-    {
-      "windwp/nvim-spectre",
-      event = "BufRead",
-      config = function()
-        require("user.spectre").config()
-      end,
-    },
+    -- {
+    --   "windwp/nvim-spectre",
+    --   event = "BufRead",
+    --   config = function()
+    --     require("user.spectre").config()
+    --   end,
+    -- },
     {
       "norcalli/nvim-colorizer.lua",
       config = function()
@@ -223,16 +241,15 @@ M.config = function()
       end,
       disable = not lvim.builtin.presence.active,
     },
-    { "mfussenegger/nvim-jdtls", ft = "java" },
-    {
-      "kristijanhusak/orgmode.nvim",
-      keys = { "go", "gC" },
-      ft = { "org" },
-      config = function()
-        require("user.orgmode").setup()
-      end,
-      disable = not lvim.builtin.orgmode.active,
-    },
+    -- { "mfussenegger/nvim-jdtls", ft = "java" },
+    -- {
+    --   "kristijanhusak/orgmode.nvim",
+    --   ft = { "org" },
+    --   config = function()
+    --     require("user.orgmode").setup()
+    --   end,
+    --   disable = not lvim.builtin.orgmode.active,
+    -- },
     {
       "danymat/neogen",
       config = function()
@@ -272,10 +289,10 @@ M.config = function()
       opt = true,
       before = "williamboman/nvim-lsp-installer",
     },
-    {
-      "lervag/vimtex",
-      ft = "tex",
-    },
+    -- {
+    --   "lervag/vimtex",
+    --   ft = "tex",
+    -- },
     {
       "akinsho/bufferline.nvim",
       config = function()
@@ -294,14 +311,14 @@ M.config = function()
       event = { "BufEnter *_test.*,*_spec.*" },
       disable = not lvim.builtin.test_runner.active,
     },
-    {
-      "akinsho/flutter-tools.nvim",
-      requires = "nvim-lua/plenary.nvim",
-      config = function()
-        require("user.flutter_tools").config()
-      end,
-      ft = "dart",
-    },
+    -- {
+    --   "akinsho/flutter-tools.nvim",
+    --   requires = "nvim-lua/plenary.nvim",
+    --   config = function()
+    --     require("user.flutter_tools").config()
+    --   end,
+    --   ft = "dart",
+    -- },
     {
       "RishabhRD/nvim-cheat.sh",
       requires = "RishabhRD/popfix",
@@ -434,7 +451,7 @@ M.config = function()
           },
         }
       end,
-      disable = not lvim.builtin.fancy_diff.active,
+      disable = true
     },
     {
       "chipsenkbeil/distant.nvim",
@@ -495,7 +512,7 @@ M.config = function()
       config = function()
         require("floatline").setup()
       end,
-      disable = not lvim.builtin.global_status_line.active,
+      disable = true
     },
     {
       "luukvbaal/stabilize.nvim",
