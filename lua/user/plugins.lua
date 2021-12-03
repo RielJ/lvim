@@ -23,10 +23,10 @@ M.config = function()
        colorscheme zephyr
        ]]
       end,
-      -- cond = function()
-      --   local _time = os.date "*t"
-      --   return (_time.hour >= 5 and _time.hour < 8)
-      -- end,
+      cond = function()
+        local _time = os.date "*t"
+        return (_time.hour >= 5 and _time.hour < 8)
+      end,
     },
     {
       "rose-pine/neovim",
@@ -34,10 +34,10 @@ M.config = function()
       config = function()
         require("user.theme").rose_pine()
       end,
-      -- cond = function()
-      --   local _time = os.date "*t"
-      --   return (_time.hour >= 8 and _time.hour < 11)
-      -- end,
+      cond = function()
+        local _time = os.date "*t"
+        return (_time.hour >= 8 and _time.hour < 11)
+      end,
     },
     {
       "folke/tokyonight.nvim",
@@ -47,10 +47,10 @@ M.config = function()
           colorscheme tokyonight
           ]]
       end,
-      -- cond = function()
-      --   local _time = os.date "*t"
-      --   return (_time.hour >= 0 and _time.hour < 5) or (_time.hour >= 11 and _time.hour < 17)
-      -- end,
+      cond = function()
+        local _time = os.date "*t"
+        return (_time.hour >= 0 and _time.hour < 5) or (_time.hour >= 11 and _time.hour < 17)
+      end,
     },
     {
       "abzcoding/doom-one.nvim",
@@ -61,10 +61,10 @@ M.config = function()
       colorscheme doom-one
       ]]
       end,
-      -- cond = function()
-      --   local _time = os.date "*t"
-      --   return (_time.hour >= 17 and _time.hour < 21)
-      -- end,
+      cond = function()
+        local _time = os.date "*t"
+        return (_time.hour >= 17 and _time.hour < 21)
+      end,
     },
     {
       "ray-x/lsp_signature.nvim",
@@ -111,16 +111,15 @@ M.config = function()
     },
     {
       "phaazon/hop.nvim",
-      -- "ChristianChiarulli/vim-solidity",
-      "ilya-bobyr/vim-solidity",
-    },
-    {
-      "IndianBoy42/hop.nvim",
       event = "BufRead",
       config = function()
         require("user.hop").config()
       end,
       disable = lvim.builtin.motion_provider ~= "hop",
+    },
+    {
+      -- "ChristianChiarulli/vim-solidity",
+      "ilya-bobyr/vim-solidity",
     },
     {
       "simrat39/symbols-outline.nvim",
@@ -301,16 +300,16 @@ M.config = function()
       requires = "nvim-web-devicons",
       disable = not lvim.builtin.fancy_bufferline.active,
     },
-    {
-      "rcarriga/vim-ultest",
-      cmd = { "Ultest", "UltestSummary", "UltestNearest" },
-      wants = "vim-test",
-      requires = { "vim-test/vim-test" },
-      run = ":UpdateRemotePlugins",
-      opt = true,
-      event = { "BufEnter *_test.*,*_spec.*" },
-      disable = not lvim.builtin.test_runner.active,
-    },
+    -- {
+    --   "rcarriga/vim-ultest",
+    --   cmd = { "Ultest", "UltestSummary", "UltestNearest" },
+    --   wants = "vim-test",
+    --   requires = { "vim-test/vim-test" },
+    --   run = ":UpdateRemotePlugins",
+    --   opt = true,
+    --   event = { "BufEnter *_test.*,*_spec.*" },
+    --   disable = not lvim.builtin.test_runner.active,
+    -- },
     -- {
     --   "akinsho/flutter-tools.nvim",
     --   requires = "nvim-lua/plenary.nvim",
@@ -451,7 +450,7 @@ M.config = function()
           },
         }
       end,
-      disable = true
+      disable = true,
     },
     {
       "chipsenkbeil/distant.nvim",
@@ -512,7 +511,7 @@ M.config = function()
       config = function()
         require("floatline").setup()
       end,
-      disable = true
+      disable = true,
     },
     {
       "luukvbaal/stabilize.nvim",

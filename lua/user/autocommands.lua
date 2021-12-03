@@ -2,9 +2,6 @@ local M = {}
 
 M.config = function()
   -- Autocommands
-  --   vim.cmd [[
-  --  au BufRead,BufNewFile *.graphql set filetype=gql
-  -- ]]
 
   if lvim.builtin.nonumber_unfocus then
     vim.cmd [[
@@ -41,6 +38,10 @@ augroup BigFileDisable
     autocmd BufReadPre,FileReadPre * if getfsize(expand("%")) > 1024 * 1024 | exec DisableSyntaxTreesitter() | endif
 augroup END
   ]]
+
+  -- vim.cmd [[
+  --  au BufRead,BufNewFile *.graphql set filetype=gql
+  -- ]]
 
   if lvim.builtin.sql_integration.active then
     -- Add vim-dadbod-completion in sql files
@@ -123,32 +124,33 @@ end
 M.make_run = function()
   return {
     -- c, cpp
-    {
-      "Filetype",
-      "c,cpp",
-      "nnoremap <leader>m <cmd>lua require('lvim.core.terminal')._exec_toggle('make ;read')<CR>",
-    },
-    {
-      "Filetype",
-      "c,cpp",
-      "nnoremap <leader>r <cmd>lua require('lvim.core.terminal')._exec_toggle('make run;read')<CR>",
-    },
+    -- {
+    --   "Filetype",
+    --   "c,cpp",
+    --   "nnoremap <leader>m <cmd>lua require('lvim.core.terminal')._exec_toggle('make ;read')<CR>",
+    -- },
+    -- {
+    --   "Filetype",
+    --   "c,cpp",
+    --   "nnoremap <leader>r <cmd>lua require('lvim.core.terminal')._exec_toggle('make run;read')<CR>",
+    -- },
 
-    -- go
-    {
-      "Filetype",
-      "go",
-      "nnoremap <leader>m <cmd>lua require('lvim.core.terminal')._exec_toggle('go build -v .;read')<CR>",
-    },
-    {
-      "Filetype",
-      "go",
-      "nnoremap <leader>r <cmd>lua require('lvim.core.terminal')._exec_toggle('go run .;read')<CR>",
-    {
-      "Filetype",
-      "java",
-      "nnoremap <leader>m <cmd>lua require('toggleterm.terminal').Terminal:new {cmd='mvn compile;read', hidden =false}:toggle()<CR>",
-    },
+    -- -- go
+    -- {
+    --   "Filetype",
+    --   "go",
+    --   "nnoremap <leader>m <cmd>lua require('lvim.core.terminal')._exec_toggle('go build -v .;read')<CR>",
+    -- },
+    -- {
+    --   "Filetype",
+    --   "go",
+    --   "nnoremap <leader>r <cmd>lua require('lvim.core.terminal')._exec_toggle('go run .;read')<CR>",
+    -- },
+    -- {
+    --   "Filetype",
+    --   "java",
+    --   "nnoremap <leader>m <cmd>lua require('toggleterm.terminal').Terminal:new {cmd='mvn compile;read', hidden =false}:toggle()<CR>",
+    -- },
 
     -- python
     {
@@ -165,16 +167,16 @@ M.make_run = function()
     },
 
     -- rust
-    {
-      "Filetype",
-      "rust",
-      "nnoremap <leader>m <cmd>lua require('lvim.core.terminal')._exec_toggle('cargo build;read')<CR>",
-    },
-    {
-      "Filetype",
-      "rust",
-      "nnoremap <leader>r <cmd>lua require('rust-tools.runnables').runnables()<CR>",
-    },
+    -- {
+    --   "Filetype",
+    --   "rust",
+    --   "nnoremap <leader>m <cmd>lua require('lvim.core.terminal')._exec_toggle('cargo build;read')<CR>",
+    -- },
+    -- {
+    --   "Filetype",
+    --   "rust",
+    --   "nnoremap <leader>r <cmd>lua require('rust-tools.runnables').runnables()<CR>",
+    -- },
   }
 end
 

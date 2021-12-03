@@ -40,3 +40,5 @@ local opts = {
 }
 
 return opts
+
+-- require("lvim.lsp.manager").setup("tsserver", opts)

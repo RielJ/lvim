@@ -7,10 +7,10 @@ lvim.transparent_window = true
 lvim.debug = false
 lvim.log.level = "warn"
 require("user.neovim").config()
-local _time = os.date "*t"
-if _time.hour >= 21 and _time.hour < 24 then
-  lvim.colorscheme = "onedarker"
-end
+-- local _time = os.date "*t"
+-- if _time.hour >= 21 and _time.hour < 24 then
+--   lvim.colorscheme = "onedarker"
+-- end
 
 -- Customization
 -- =========================================
@@ -30,29 +30,20 @@ lvim.builtin.fancy_diff = { active = false } -- enable/disable fancier git diff
 lvim.builtin.lua_dev = { active = true } -- change this to enable/disable folke/lua_dev
 lvim.builtin.test_runner = { active = false } -- change this to enable/disable vim-test, ultest
 lvim.builtin.cheat = { active = true } -- enable cheat.sh integration
-lvim.builtin.sql_integration = { active = true } -- use sql integration
-lvim.builtin.neoclip = { active = true, enable_persistant_history = false }
+lvim.builtin.sql_integration = { active = false } -- use sql integration
+lvim.builtin.neoclip = { active = false, enable_persistant_history = false }
 lvim.builtin.nonumber_unfocus = false -- diffrentiate between focused and non focused windows
-lvim.builtin.harpoon = { active = true } -- use the harpoon plugin
+lvim.builtin.harpoon = { active = false } -- use the harpoon plugin
 lvim.builtin.sql_integration = { active = false } -- use sql integration
 lvim.builtin.neoscroll = { active = false } -- smooth scrolling
 lvim.builtin.remote_dev = { active = false } -- enable/disable remote development
 lvim.builtin.global_status_line = { active = true } -- use the global status line
 lvim.builtin.cursorline = { active = false } -- use a bit fancier cursorline
-lvim.builtin.motion_provider = "hop" -- change this to use different motion providers ( hop or lightspeed )
+lvim.builtin.motion_provider = "lightspeed" -- change this to use different motion providers ( hop or lightspeed )
 lvim.builtin.hlslens = { active = false } -- enable/disable hlslens
 lvim.builtin.csv_support = false -- enable/disable csv support
 lvim.builtin.sidebar = { active = false } -- enable/disable sidebar
 lvim.builtin.async_tasks = { active = false } -- enable/disable async tasks
-local user = os.getenv "USER"
-if user and user == "abz" then
-  lvim.builtin.nvim_web_devicons = { active = false }
-  lvim.builtin.sell_your_soul_to_devil = true
-  lvim.lsp.document_highlight = false
-  lvim.builtin.csv_support = true
-  lvim.builtin.async_tasks.active = true
-  lvim.builtin.dap.active = true
-end
 lvim.lsp.diagnostics.virtual_text = false -- remove this line if you want to see inline errors
 lvim.builtin.cursorline = { active = false } -- use a bit fancier cursorline
 lvim.builtin.latex = {
@@ -69,12 +60,6 @@ end
 lvim.lsp.code_lens_refresh = true
 require("user.builtin").config()
 
--- StatusLine
--- =========================================
-if lvim.builtin.fancy_statusline.active then
-  require("user.lualine").config()
-end
-
 -- Debugging
 -- =========================================
 if lvim.builtin.dap.active then
@@ -83,12 +68,17 @@ end
 
 -- Language Specific
 -- =========================================
-vim.list_extend(lvim.lsp.override, { "rust_analyzer" })
 require("user.null_ls").config()
 
 -- Additional Plugins
 -- =========================================
 require("user.plugins").config()
+
+-- StatusLine
+-- =========================================
+if lvim.builtin.fancy_statusline.active then
+  require("user.lualine").config()
+end
 
 -- Autocommands
 -- =========================================

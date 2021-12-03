@@ -136,7 +136,7 @@ M.config = function()
     },
   }
   lvim.builtin.nvimtree.icons = kind.nvim_tree_icons
-  -- lvim.builtin.nvimtree.hide_dotfiles = 0
+  lvim.builtin.nvimtree.hide_dotfiles = 0
 
   -- Project
   -- =========================================
